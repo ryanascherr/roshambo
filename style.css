@@ -1,0 +1,32 @@
+h1, h2, h3 {
+    text-align: center;
+}
+
+img {
+    width: 150px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.page-container {
+    display: flex;
+}
+
+.player-container, .opponent-container {
+    width: 50%;
+}
+
+.choices {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.choices img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
