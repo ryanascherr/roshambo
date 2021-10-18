@@ -34,3 +34,90 @@ button:hover {
     transform: scale(1.1);
 }
 
+.opp-face {
+    animation-name: move;
+    animation-duration: .75s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    position: relative;
+}
+
+.think-face {
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    position: relative;
+}
+
+@keyframes move {
+    from {
+        top: -10px;
+    }
+    to {
+        top: 10px;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(25deg);
+    }
+    to {
+        transform: rotate(-25deg);
+    }
+}
+
+.bob1 {
+    animation-name: bob;
+    animation-duration: .75s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    position: relative;
+}
+
+.bob2 {
+    animation-name: bob;
+    animation-duration: .75s;
+    animation-timing-function: ease-in-out;
+    animation-delay: .15s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    position: relative;
+}
+
+.bob3 {
+    animation-name: bob;
+    animation-duration: .75s;
+    animation-timing-function: ease-in-out;
+    animation-delay: .30s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    position: relative;
+}
+
+.bob4 {
+    animation-name: bob;
+    animation-duration: .75s;
+    animation-timing-function: ease-in-out;
+    animation-delay: .45s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    position: relative;
+}
+
+@keyframes bob {
+    from {
+        top: -2.5px;
+    }
+    to {
+        top: 2.5px;
+    }
+}
+

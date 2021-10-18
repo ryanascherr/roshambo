@@ -15,6 +15,11 @@ $("img").click(function() {
     decideWinner();
 });
 
+$('.test').click(function() {
+    oppFace.html(thinkFace);
+    oppFace.addClass('think-face');
+})
+
 function randomizeOpponentChoice() {
     oppChoice = options[Math.floor(Math.random()*options.length)];
     console.log({oppChoice});
@@ -24,13 +29,17 @@ function decideWinner() {
     if (playerChoice == oppChoice) {
         $(".result").html("Tie!");
         oppFace.html(tieFace);
+        oppFace.removeClass('think-face');
     } else if ((playerChoice == "rock" && oppChoice == "scissor") || (playerChoice == "paper" && oppChoice == "rock") || (playerChoice == "scissor" && oppChoice == "paper")) {
         $(".result").html("You Win!");
         let currentFace = playerWinFaces[Math.floor(Math.random()*playerWinFaces.length)];
         oppFace.html(currentFace);
+        oppFace.removeClass('think-face');
     } else {
         $(".result").html("You Lose!");
         let currentFace = playerLossFaces[Math.floor(Math.random()*playerLossFaces.length)];
         oppFace.html(currentFace);
+        oppFace.removeClass('think-face');
     }
 }
+
