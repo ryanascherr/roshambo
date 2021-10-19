@@ -2,12 +2,20 @@ h1, h2, h3 {
     text-align: center;
 }
 
+h1 {
+    font-size: 50px;
+}
+
 img {
     width: 150px;
 }
 
 button:hover {
     cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }
 
 .page-container {

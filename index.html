@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <header>
+    <header class="hidden">
         <h1><span class="bob1">R</span><span class="bob2">o</span><span class="bob3">s</span><span class="bob4">h</span><span class="bob1">a</span><span class="bob2">m</span><span class="bob3">b</span><span class="bob4">o</span></h1>
     </header>
-    <main>
+    <h1 class="intro"><span class="one hidden">Are </span><span class="two hidden">you </span><span class="three hidden">ready </span><span class="four hidden">to</span><span class="five hidden">.</span><span class="six hidden">.</span><span class="seven hidden">.</span></h1>
+    <h1 class="roshambo">
+        <span class="ro hidden">Ro</span><span class="sham hidden">sham</span><span class="bo hidden">bo</span>
+    </h1>
+    <main class="hidden test2">
         <div class="page-container">
             <div class="player-container">
                 <h2>Player</h2>
@@ -23,7 +27,7 @@
                 <h3 class="result"></h3>
             </div>
             <div class="opponent-container">
-                <h2>Opponent</h2>
+                <h2>Opponent: <span class="opp-name"></span></h2>
                 <span class="opp-face" style='font-size:150px;'>&#128520;</span>
                 <button class="test">Push Me</button>
             </div>
