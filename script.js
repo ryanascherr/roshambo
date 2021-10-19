@@ -8,16 +8,22 @@ const tieFace = '&#128562;';
 let oppName;
 let oppChoice;
 let playerChoice;
-let oppFace = $(".opp-face")
+let oppFace = $(".opp-face");
+let round = 1;
+let wins = 0;
+let losses = 0;
+let ties = 0;
 
 $("img").click(function() {
     playerChoice = $(this).attr("data-type");
     console.log({playerChoice});
+    $(".test3").addClass("hidden");
+    battleAnimation(playerChoice);
     randomizeOpponentChoice();
     decideWinner();
 });
 
-$('.test').click(function() {
+$('.push-me').click(function() {
     oppFace.html(thinkFace);
     oppFace.addClass('think-face');
 })
@@ -25,6 +31,15 @@ $('.test').click(function() {
 oppName = evilNames[Math.floor(Math.random()*evilNames.length)];
 console.log(oppName);
 $(".opp-name").html(oppName);
+$(".round").html(round);
+$(".wins").html(wins);
+$(".ties").html(ties);
+$(".losses").html(losses);
+
+function battleAnimation(playerChoice) {
+    console.log("hey");
+    $(".player-choice-image").src="./image/paper.png";
+}
 
 function randomizeOpponentChoice() {
     oppChoice = options[Math.floor(Math.random()*options.length)];
@@ -34,19 +49,27 @@ function randomizeOpponentChoice() {
 function decideWinner() {
     if (playerChoice == oppChoice) {
         $(".result").html("Tie!");
+        ties++;
+        $(".ties").html(ties);
         oppFace.html(tieFace);
         oppFace.removeClass('think-face');
     } else if ((playerChoice == "rock" && oppChoice == "scissor") || (playerChoice == "paper" && oppChoice == "rock") || (playerChoice == "scissor" && oppChoice == "paper")) {
         $(".result").html("You Win!");
+        wins++;
+        $(".wins").html(wins);
         let currentFace = playerWinFaces[Math.floor(Math.random()*playerWinFaces.length)];
         oppFace.html(currentFace);
         oppFace.removeClass('think-face');
     } else {
         $(".result").html("You Lose!");
+        losses++;
+        $(".losses").html(losses);
         let currentFace = playerLossFaces[Math.floor(Math.random()*playerLossFaces.length)];
         oppFace.html(currentFace);
         oppFace.removeClass('think-face');
     }
+    $(".begin-btn").removeClass("hidden");
+    $(".round").html(round);
 }
 
 $(window).on('load', function() {
@@ -87,7 +110,25 @@ $(window).on('load', function() {
         $(".ro").addClass("bob1");
         $(".sham").addClass("bob3");
         $(".bo").addClass("bob1");
-        $(".test2").slideToggle();
+        $("main").slideToggle();
     }, 4750);
+});
+
+function opponentMakeChoice() {
+    oppFace.html(thinkFace);
+    oppFace.addClass('think-face');
+    setTimeout(function () {
+        oppFace.html(meanFace);
+        oppFace.removeClass('think-face');
+        $(".test3").removeClass("hidden");
+    }, 3000);
+}
+
+$(".begin-btn").click(function () {
+    opponentMakeChoice();
+    $(".begin-btn").addClass("hidden");
+    round++;
+    $(".round").html(round);
+    $(".result").html("");
 })
 

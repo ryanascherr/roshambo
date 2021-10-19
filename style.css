@@ -25,9 +25,14 @@ button:hover {
 .player-container, .opponent-container {
     width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
+}
+
+.record {
+    display: flex;
+    gap: 10px;
 }
 
 .choices {
