@@ -20,17 +20,38 @@ button:hover {
 
 .page-container {
     display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.player-opp-container {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .player-container, .opponent-container {
     width: 50%;
+    max-width: 500px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
+    border: 2px solid red;
+}
+
+.player-battle, .opp-battle {
+    position: relative;
+    font-size: 20px;
+}
+
+.battle-arena {
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
 }
 
 .record {
+    align-self: center;
     display: flex;
     gap: 10px;
 }
@@ -48,12 +69,30 @@ button:hover {
 }
 
 .opp-face {
-    animation-name: move;
+    /* animation-name: move;
     animation-duration: .75s;
     animation-timing-function: ease-in-out;
     animation-delay: 0;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    position: relative; */
+}
+
+.fly-away1 {
+    animation-name: flyAway1;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    position: relative;
+}
+
+.fly-away2 {
+    animation-name: flyAway2;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0;
+    animation-iteration-count: 1;
     position: relative;
 }
 
@@ -65,6 +104,76 @@ button:hover {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     position: relative;
+}
+
+.fight1 {
+    animation-name: fight1;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    position: relative;
+}
+
+.fight2 {
+    animation-name: fight2;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    position: relative;
+}
+
+@keyframes fight1 {
+    0% {
+        font-size: 0;
+        right: 300px;
+    }
+    75% {
+        font-size: 20px;
+        right: 300px;
+    }
+    100% {
+        font-size: 20px;
+        right: 0;
+    }
+}
+
+@keyframes fight2 {
+    0% {
+        font-size: 0;
+        left: 300px;
+    }
+    75% {
+        font-size: 20px;
+        left: 300px;
+    }
+    100% {
+        font-size: 20px;
+        left: 0;
+    }
+}
+
+@keyframes flyAway1 {
+    from {
+        bottom: 0;
+        right: 0;
+    }
+    to {
+        bottom: 1000px;
+        right: 1000px;
+    }
+}
+
+@keyframes flyAway2 {
+    from {
+        bottom: 0;
+        left: 0;
+    }
+    to {
+        bottom: 1000px;
+        left: 1000px;
+    }
 }
 
 @keyframes move {
