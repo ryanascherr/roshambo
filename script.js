@@ -5,7 +5,7 @@ const evilNames = ['Zyler Razor', 'Sephiran Ash', 'Arc Maleficum', 'Karayan Voss
 const thinkFace = '&#129300;';
 const meanFace = '&#128520;';
 const tieFace = '&#128562;';
-let status;
+let status = "";
 let oppName;
 let oppChoice;
 let playerChoice;
@@ -77,14 +77,6 @@ function battleAnimation() {
     }
 }
 
-oppName = evilNames[Math.floor(Math.random()*evilNames.length)];
-console.log(oppName);
-$(".opp-name").html(oppName);
-$(".round").html(round);
-$(".wins").html(wins);
-$(".ties").html(ties);
-$(".losses").html(losses);
-
 function randomizeOpponentChoice() {
     oppChoice = options[Math.floor(Math.random()*options.length)];
     console.log({oppChoice});
@@ -93,7 +85,7 @@ function randomizeOpponentChoice() {
 function decideWinner() {
     if (playerChoice == oppChoice) {
         status = "tie";
-    } else if ((playerChoice == "rock" && oppChoice == "scissor") || (playerChoice == "paper" && oppChoice == "rock") || (playerChoice == "scissor" && oppChoice == "paper")) {
+    } else if ((playerChoice == "Rock" && oppChoice == "Scissors") || (playerChoice == "Paper" && oppChoice == "Rock") || (playerChoice == "Scissors" && oppChoice == "Paper")) {
         status = "win";
     } else {
         status = "loss";
@@ -103,6 +95,12 @@ function decideWinner() {
 }
 
 $(window).on('load', function() {
+    oppName = evilNames[Math.floor(Math.random()*evilNames.length)];
+    $(".opp-name").html(oppName);
+    $(".round").html(round);
+    $(".wins").html(wins);
+    $(".ties").html(ties);
+    $(".losses").html(losses);
     setTimeout(function () {
         $(".one").removeClass("hidden");
     }, 1000);
@@ -140,13 +138,9 @@ $(window).on('load', function() {
         $(".ro").addClass("bob1");
         $(".sham").addClass("bob3");
         $(".bo").addClass("bob1");
-        // $("main").slideToggle();
+        $("main").slideToggle();
     }, 4750);
 });
-
-function handleShowdown() {
-    console.log("hey");
-}
 
 function opponentMakeChoice() {
     oppFace.html(thinkFace);
@@ -166,5 +160,9 @@ $(".begin-btn").click(function () {
     round++;
     $(".round").html(round);
     $(".result").html("");
+    $(".opp-battle").html("");
+    $(".player-battle").html("");
+    $(".opp-battle").removeClass("fight2");
+    $(".player-battle").removeClass("fight1");
 })
 
