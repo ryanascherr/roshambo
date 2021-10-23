@@ -7,8 +7,8 @@ const meanFace = '&#128520;';
 const tieFace = '&#128562;';
 let status = "";
 let oppName = "Bobby Beefcake";
-let oppChoice;
-let playerChoice;
+let oppChoice = "";
+let playerChoice = "";
 let oppFace = $(".opp-face");
 let round = 1;
 let wins = 0;
@@ -29,10 +29,9 @@ $(".opp-select").change(function() {
 })
 
 $("img").click(function() {
-    playerChoice = $(this).attr("data-type");
-    console.log({playerChoice});
     $(".choices-container").addClass("hidden");
-    randomizeOpponentChoice();
+    decideOpponentChoice();
+    playerChoice = $(this).attr("data-type");
     decideWinner();
     battleAnimation();
 });
@@ -90,9 +89,21 @@ function battleAnimation() {
     }
 }
 
-function randomizeOpponentChoice() {
-    oppChoice = options[Math.floor(Math.random()*options.length)];
-    console.log({oppChoice});
+function decideOpponentChoice() {
+    if ($(".opp-name").html() == "Bobby Beefcake") {
+        oppChoice = "Rock";
+    }
+    if (($(".opp-name").html() == "Sarah Switch")) {
+        if (!playerChoice) {
+            oppChoice = options[Math.floor(Math.random()*options.length)];
+        } else {
+            oppChoice = playerChoice;
+        }
+    }
+    
+    // else {
+    //     oppChoice = options[Math.floor(Math.random()*options.length)];
+    // }
 }
 
 function decideWinner() {
