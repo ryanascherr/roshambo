@@ -24,6 +24,12 @@ button:hover {
     /* align-items: center; */
 }
 
+.opp-select {
+    width: 175px;
+    align-self: center;
+    text-align: center;
+}
+
 .player-opp-container {
     display: flex;
     justify-content: space-evenly;

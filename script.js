@@ -6,7 +6,7 @@ const thinkFace = '&#129300;';
 const meanFace = '&#128520;';
 const tieFace = '&#128562;';
 let status = "";
-let oppName;
+let oppName = "Bobby Beefcake";
 let oppChoice;
 let playerChoice;
 let oppFace = $(".opp-face");
@@ -14,6 +14,19 @@ let round = 1;
 let wins = 0;
 let losses = 0;
 let ties = 0;
+
+$(".opp-select").change(function() {
+    oppName = this.value;
+    $(".opp-name").html(oppName);
+    wins = 0;
+    losses = 0;
+    ties = 0;
+    round = 1;
+    $(".wins").html(wins);
+    $(".ties").html(ties);
+    $(".losses").html(losses);
+    $(".round").html(round);
+})
 
 $("img").click(function() {
     playerChoice = $(this).attr("data-type");
@@ -95,7 +108,7 @@ function decideWinner() {
 }
 
 $(window).on('load', function() {
-    oppName = evilNames[Math.floor(Math.random()*evilNames.length)];
+    // oppName = evilNames[Math.floor(Math.random()*evilNames.length)];
     $(".opp-name").html(oppName);
     $(".round").html(round);
     $(".wins").html(wins);
@@ -138,7 +151,7 @@ $(window).on('load', function() {
         $(".ro").addClass("bob1");
         $(".sham").addClass("bob3");
         $(".bo").addClass("bob1");
-        $("main").slideToggle();
+        // $("main").slideToggle();
     }, 4750);
 });
 
