@@ -56,6 +56,7 @@ function battleAnimation() {
                 ties++;
                 $(".ties").html(ties);
                 oppFace.html(tieFace);
+                $(".begin-btn").removeClass("hidden");
             }, 1000);
         }, 2000);
     }
@@ -70,6 +71,7 @@ function battleAnimation() {
                 $(".wins").html(wins);
                 let currentFace = playerWinFaces[Math.floor(Math.random()*playerWinFaces.length)];
                 oppFace.html(currentFace);
+                $(".begin-btn").removeClass("hidden");
             }, 1000);
         }, 2000);
     }
@@ -84,6 +86,7 @@ function battleAnimation() {
                 $(".losses").html(losses);
                 let currentFace = playerLossFaces[Math.floor(Math.random()*playerLossFaces.length)];
                 oppFace.html(currentFace);
+                $(".begin-btn").removeClass("hidden");
             }, 1000);
         }, 2000);
     }
@@ -100,10 +103,23 @@ function decideOpponentChoice() {
             oppChoice = playerChoice;
         }
     }
-    
-    // else {
-    //     oppChoice = options[Math.floor(Math.random()*options.length)];
-    // }
+    if (($(".opp-name").html() == "Rahul Ringer")) {
+        if (!playerChoice) {
+            oppChoice = options[Math.floor(Math.random()*options.length)];
+        } else {
+            if (playerChoice == "Rock") {
+                oppChoice = "Paper";
+            }
+            if (playerChoice == "Paper") {
+                oppChoice = "Scissors";
+            }
+            if (playerChoice == "Scissors") {
+                oppChoice = "Rock";
+            }
+        }
+    } else {
+        oppChoice = options[Math.floor(Math.random()*options.length)];
+    }
 }
 
 function decideWinner() {
@@ -114,7 +130,6 @@ function decideWinner() {
     } else {
         status = "loss";
     }
-    $(".begin-btn").removeClass("hidden");
     $(".round").html(round);
 }
 
