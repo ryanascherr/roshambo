@@ -45,7 +45,7 @@ function battleAnimation() {
                 $(".ties").html(ties);
                 oppFace.html(tieFace);
             }, 1000);
-        }, 1500);
+        }, 2000);
     }
     if (status == "win") {
         setTimeout(function () {
@@ -59,7 +59,7 @@ function battleAnimation() {
                 let currentFace = playerWinFaces[Math.floor(Math.random()*playerWinFaces.length)];
                 oppFace.html(currentFace);
             }, 1000);
-        }, 1500);
+        }, 2000);
     }
     if (status == "loss") {
         setTimeout(function () {
@@ -73,7 +73,7 @@ function battleAnimation() {
                 let currentFace = playerLossFaces[Math.floor(Math.random()*playerLossFaces.length)];
                 oppFace.html(currentFace);
             }, 1000);
-        }, 1500);
+        }, 2000);
     }
 }
 
