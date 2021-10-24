@@ -76,6 +76,7 @@ $(".opp-select").change(function() {
     $(".result").html("");
     $(".opp-battle").html("");
     $(".player-battle").html("");
+    oppFace.html(meanFace);
 })
 
 $(".begin-btn").click(function () {
@@ -117,14 +118,11 @@ function decideOpponentChoice() {
     if (oppName == "Oliver Order") {
         if (!oppChoice) {
             oppChoice = "Rock";
-        }
-        if (oppChoice == "Rock") {
+        } else if (oppChoice == "Rock") {
             oppChoice = "Paper";
-        }
-        if (oppChoice == "Paper") {
+        } else if (oppChoice == "Paper") {
             oppChoice = "Scissors";
-        }
-        if (oppChoice == "Scissors") {
+        } else if (oppChoice == "Scissors") {
             oppChoice = "Rock";
         }
     }
@@ -141,11 +139,9 @@ function decideOpponentChoice() {
         } else {
             if (playerChoice == "Rock") {
                 oppChoice = "Paper";
-            }
-            if (playerChoice == "Paper") {
+            } else if (playerChoice == "Paper") {
                 oppChoice = "Scissors";
-            }
-            if (playerChoice == "Scissors") {
+            } else if (playerChoice == "Scissors") {
                 oppChoice = "Rock";
             }
         }
