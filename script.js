@@ -15,6 +15,53 @@ let wins = 0;
 let losses = 0;
 let ties = 0;
 
+$(window).on('load', function() {
+    $(".opp-name").html(oppName);
+    $(".round").html(round);
+    $(".wins").html(wins);
+    $(".ties").html(ties);
+    $(".losses").html(losses);
+    setTimeout(function () {
+        $(".one").removeClass("hidden");
+    }, 1000);
+    setTimeout(function () {
+        $(".two").removeClass("hidden");
+    }, 1500);
+    setTimeout(function () {
+        $(".three").removeClass("hidden");
+    }, 2000);
+    setTimeout(function () {
+        $(".four").removeClass("hidden");
+    }, 2500);
+    setTimeout(function () {
+        $(".five").removeClass("hidden");
+    }, 3000);
+    setTimeout(function () {
+        $(".six").removeClass("hidden");
+    }, 3250);
+    setTimeout(function () {
+        $(".seven").removeClass("hidden");
+    }, 3500);
+    setTimeout(function () {
+        $(".intro").addClass("hidden");
+    }, 4000);
+    setTimeout(function () {
+        $(".ro").removeClass("hidden");
+    }, 4000);
+    setTimeout(function () {
+        $(".sham").removeClass("hidden");
+    }, 4250);
+    setTimeout(function () {
+        $(".bo").removeClass("hidden");
+    }, 4500);
+    setTimeout(function () {
+        $(".ro").addClass("bob1");
+        $(".sham").addClass("bob3");
+        $(".bo").addClass("bob1");
+        $("main").slideToggle();
+    }, 4750);
+});
+
 $(".opp-select").change(function() {
     oppName = this.value;
     $(".opp-name").html(oppName);
@@ -26,7 +73,34 @@ $(".opp-select").change(function() {
     $(".ties").html(ties);
     $(".losses").html(losses);
     $(".round").html(round);
+    $(".result").html("");
+    $(".opp-battle").html("");
+    $(".player-battle").html("");
 })
+
+$(".begin-btn").click(function () {
+    opponentMakeChoice();
+    $(".begin-btn").addClass("hidden");
+    round++;
+    $(".round").html(round);
+    $(".result").html("");
+    $(".opp-battle").html("");
+    $(".player-battle").html("");
+    $(".opp-battle").removeClass("fight2");
+    $(".player-battle").removeClass("fight1");
+})
+
+function opponentMakeChoice() {
+    oppFace.html(thinkFace);
+    oppFace.addClass('think-face');
+    $(".thinking").removeClass("hidden");
+    setTimeout(function () {
+        oppFace.html(meanFace);
+        oppFace.removeClass('think-face');
+        $(".choices-container").removeClass("hidden");
+        $(".thinking").addClass("hidden");
+    }, 1500);
+}
 
 $("img").click(function() {
     $(".choices-container").addClass("hidden");
@@ -36,9 +110,63 @@ $("img").click(function() {
     battleAnimation();
 });
 
+function decideOpponentChoice() {
+    if (oppName == "Bobby Beefcake") {
+        oppChoice = "Rock";
+    }
+    if (oppName == "Oliver Order") {
+        if (!oppChoice) {
+            oppChoice = "Rock";
+        }
+        if (oppChoice == "Rock") {
+            oppChoice = "Paper";
+        }
+        if (oppChoice == "Paper") {
+            oppChoice = "Scissors";
+        }
+        if (oppChoice == "Scissors") {
+            oppChoice = "Rock";
+        }
+    }
+    if (oppName == "Sarah Switch") {
+        if (!playerChoice) {
+            oppChoice = options[Math.floor(Math.random()*options.length)];
+        } else {
+            oppChoice = playerChoice;
+        }
+    }
+    if (oppName == "Rahul Ringer") {
+        if (!playerChoice) {
+            oppChoice = options[Math.floor(Math.random()*options.length)];
+        } else {
+            if (playerChoice == "Rock") {
+                oppChoice = "Paper";
+            }
+            if (playerChoice == "Paper") {
+                oppChoice = "Scissors";
+            }
+            if (playerChoice == "Scissors") {
+                oppChoice = "Rock";
+            }
+        }
+    } 
+    if (oppName == "Random") {
+        oppChoice = options[Math.floor(Math.random()*options.length)];
+    }
+}
+
+function decideWinner() {
+    if (playerChoice == oppChoice) {
+        status = "tie";
+    } else if ((playerChoice == "Rock" && oppChoice == "Scissors") || (playerChoice == "Paper" && oppChoice == "Rock") || (playerChoice == "Scissors" && oppChoice == "Paper")) {
+        status = "win";
+    } else {
+        status = "loss";
+    }
+    $(".round").html(round);
+}
+
 function battleAnimation() {
-    console.log(playerChoice);
-    console.log(oppChoice);
     $(".player-battle").addClass("fight1");
     $(".player-battle").html(playerChoice);
     $(".opp-battle").addClass("fight2");
@@ -92,116 +220,5 @@ function battleAnimation() {
     }
 }
 
-function decideOpponentChoice() {
-    if ($(".opp-name").html() == "Bobby Beefcake") {
-        oppChoice = "Rock";
-    }
-    if (($(".opp-name").html() == "Sarah Switch")) {
-        if (!playerChoice) {
-            oppChoice = options[Math.floor(Math.random()*options.length)];
-        } else {
-            oppChoice = playerChoice;
-        }
-    }
-    if (($(".opp-name").html() == "Rahul Ringer")) {
-        if (!playerChoice) {
-            oppChoice = options[Math.floor(Math.random()*options.length)];
-        } else {
-            if (playerChoice == "Rock") {
-                oppChoice = "Paper";
-            }
-            if (playerChoice == "Paper") {
-                oppChoice = "Scissors";
-            }
-            if (playerChoice == "Scissors") {
-                oppChoice = "Rock";
-            }
-        }
-    } else {
-        oppChoice = options[Math.floor(Math.random()*options.length)];
-    }
-}
 
-function decideWinner() {
-    if (playerChoice == oppChoice) {
-        status = "tie";
-    } else if ((playerChoice == "Rock" && oppChoice == "Scissors") || (playerChoice == "Paper" && oppChoice == "Rock") || (playerChoice == "Scissors" && oppChoice == "Paper")) {
-        status = "win";
-    } else {
-        status = "loss";
-    }
-    $(".round").html(round);
-}
-
-$(window).on('load', function() {
-    // oppName = evilNames[Math.floor(Math.random()*evilNames.length)];
-    $(".opp-name").html(oppName);
-    $(".round").html(round);
-    $(".wins").html(wins);
-    $(".ties").html(ties);
-    $(".losses").html(losses);
-    setTimeout(function () {
-        $(".one").removeClass("hidden");
-    }, 1000);
-    setTimeout(function () {
-        $(".two").removeClass("hidden");
-    }, 1500);
-    setTimeout(function () {
-        $(".three").removeClass("hidden");
-    }, 2000);
-    setTimeout(function () {
-        $(".four").removeClass("hidden");
-    }, 2500);
-    setTimeout(function () {
-        $(".five").removeClass("hidden");
-    }, 3000);
-    setTimeout(function () {
-        $(".six").removeClass("hidden");
-    }, 3250);
-    setTimeout(function () {
-        $(".seven").removeClass("hidden");
-    }, 3500);
-    setTimeout(function () {
-        $(".intro").addClass("hidden");
-    }, 4000);
-    setTimeout(function () {
-        $(".ro").removeClass("hidden");
-    }, 4000);
-    setTimeout(function () {
-        $(".sham").removeClass("hidden");
-    }, 4250);
-    setTimeout(function () {
-        $(".bo").removeClass("hidden");
-    }, 4500);
-    setTimeout(function () {
-        $(".ro").addClass("bob1");
-        $(".sham").addClass("bob3");
-        $(".bo").addClass("bob1");
-        // $("main").slideToggle();
-    }, 4750);
-});
-
-function opponentMakeChoice() {
-    oppFace.html(thinkFace);
-    oppFace.addClass('think-face');
-    $(".thinking").removeClass("hidden");
-    setTimeout(function () {
-        oppFace.html(meanFace);
-        oppFace.removeClass('think-face');
-        $(".choices-container").removeClass("hidden");
-        $(".thinking").addClass("hidden");
-    }, 1500);
-}
-
-$(".begin-btn").click(function () {
-    opponentMakeChoice();
-    $(".begin-btn").addClass("hidden");
-    round++;
-    $(".round").html(round);
-    $(".result").html("");
-    $(".opp-battle").html("");
-    $(".player-battle").html("");
-    $(".opp-battle").removeClass("fight2");
-    $(".player-battle").removeClass("fight1");
-})
 
