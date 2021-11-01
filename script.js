@@ -58,7 +58,7 @@ $(window).on('load', function() {
         $(".ro").addClass("bob1");
         $(".sham").addClass("bob3");
         $(".bo").addClass("bob1");
-        $("main").slideToggle();
+        // $("main").slideToggle();
     }, 4750);
 });
 
@@ -77,6 +77,7 @@ $(".opp-select").change(function() {
     $(".opp-battle").html("");
     $(".player-battle").html("");
     oppFace.html(meanFace);
+    $(".opp-face").removeClass("move");
 })
 
 $(".begin-btn").click(function () {
@@ -89,6 +90,7 @@ $(".begin-btn").click(function () {
     $(".player-battle").html("");
     $(".opp-battle").removeClass("fight2");
     $(".player-battle").removeClass("fight1");
+    $(".opp-face").removeClass("move");
 })
 
 function opponentMakeChoice() {
@@ -181,6 +183,7 @@ function battleAnimation() {
                 $(".ties").html(ties);
                 oppFace.html(tieFace);
                 $(".begin-btn").removeClass("hidden");
+                $(".opp-face").addClass("move");
             }, 1000);
         }, 2000);
     }
@@ -196,6 +199,7 @@ function battleAnimation() {
                 let currentFace = playerWinFaces[Math.floor(Math.random()*playerWinFaces.length)];
                 oppFace.html(currentFace);
                 $(".begin-btn").removeClass("hidden");
+                $(".opp-face").addClass("move");
             }, 1000);
         }, 2000);
     }
@@ -211,6 +215,7 @@ function battleAnimation() {
                 let currentFace = playerLossFaces[Math.floor(Math.random()*playerLossFaces.length)];
                 oppFace.html(currentFace);
                 $(".begin-btn").removeClass("hidden");
+                $(".opp-face").addClass("move");
             }, 1000);
         }, 2000);
     }

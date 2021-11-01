@@ -1,13 +1,23 @@
+body {
+    background-color: #292929;
+    color: white;
+}
+
 h1, h2, h3 {
     text-align: center;
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 500%;
+}
+
+h2 {
+    font-size: 200%;
 }
 
 img {
-    width: 150px;
+    width: 25%;
+    max-width: 80px;
 }
 
 button:hover {
@@ -25,7 +35,7 @@ button:hover {
 }
 
 .opp-select {
-    width: 175px;
+    font-size: 100%;
     align-self: center;
     text-align: center;
 }
@@ -45,9 +55,13 @@ button:hover {
     /* border: 2px solid red; */
 }
 
+.begin-btn {
+    font-size: 100%;
+}
+
 .player-battle, .opp-battle {
     position: relative;
-    font-size: 20px;
+    font-size: 200%;
 }
 
 .battle-arena {
@@ -62,11 +76,16 @@ button:hover {
     gap: 10px;
 }
 
+.choices-container {
+    width: 100%;
+}
+
 .choices {
     margin-top: 50px;
     display: flex;
     justify-content: center;
     gap: 20px;
+    width: 100%;
 }
 
 .choices img:hover {
@@ -74,14 +93,14 @@ button:hover {
     transform: scale(1.1);
 }
 
-.opp-face {
-    /* animation-name: move;
+.move {
+    animation-name: move;
     animation-duration: .75s;
     animation-timing-function: ease-in-out;
     animation-delay: 0;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    position: relative; */
+    position: relative;
 }
 
 .fly-away1 {
@@ -254,6 +273,12 @@ button:hover {
     }
     to {
         top: 2.5px;
+    }
+}
+
+@media only screen and (max-width: 980px){
+    .choices {
+        /* flex-direction: column; */
     }
 }
 
